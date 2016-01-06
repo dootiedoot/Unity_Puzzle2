@@ -1,0 +1,434 @@
+Simple RPG Camera
+Austin Zimmer
+phatrobit@gmail.com
+http://unity.phatrobit.com/
+
+Changelog
+---------------------------
+--- v2.1.0 --- 5/23/2015
+---------------------------
+SimpleRpgCamera.cs:
+	NEW: Added CurrentRotation getter / setter
+	NEW: Added CurrentDistance getter / setter
+	NEW: Added new example scene (RPG Demo (Avoidance)) to show off new avoidance collision settings
+
+	Collision Settings:
+		NEW: Avoidance Layers
+		NEW: Avoidance Speed
+	Movement Settings:
+		FIX: Edge scrolling no longer continues to scroll when the mouse leaves the game window
+
+---------------------------
+--- v2.0.0 --- 3/24/2015
+---------------------------
+Removed toon shaders
+Updated scenes and materials for Unity 5
+
+SimpleRpgCamera.cs:
+	Rotation Settings:
+		FIX: Mouse Look is no longer required for Use Joystick to work
+		NEW: Joystick Sensitivity
+		NEW: Auto Smoothing
+		NEW: Mouse Horizontal / Vertical Axis Input strings (no longer hard coded)
+
+SrpgcLegacyPlayerController.cs:
+	Moved some input code to the Update function
+
+SrpgcKeyboardMovementController.cs:
+	Added code to allow non-root motion movement so you can move like the Legacy controller but still use Mecanim animations
+
+---------------------------
+--- v1.8.2 --- 2/22/2015
+---------------------------
+SimpleRpgCamera.cs:
+	Target Settings:
+		FIX: Finding target via tag now snaps the camera to the target when found
+		NEW: Added public MoveToTarget function
+	Rotation Settings:
+		FIX: Camera should now correctly start at its' initial origin rotation
+
+---------------------------
+--- v1.8.1 --- 2/12/2015
+---------------------------
+SimpleRpgCamera.cs:
+	Target Settings:
+		NEW: Soft Tracking
+		NEW: Soft Tracking Radius
+		NEW: Soft Tracking Speed
+
+---------------------------
+--- v1.8 --- 2/10/2015
+---------------------------
+Cleaned up warnings for Unity 5
+
+SimpleRpgCamera.cs:
+	Rotation Settings:
+		NEW: Return Smoothing
+		NEW: Return Delay
+
+---------------------------
+--- v1.7.2 --- 1/8/2015
+---------------------------
+SimpleRpgCamera.cs:
+	Rotation Settings:
+		Return To Origin can now be triggered via key press
+		Stay Behind Target can now be triggered via key press
+		Origin Rotation can now be set via key press
+
+---------------------------
+--- v1.7.1 --- 12/23/2014
+---------------------------
+SimpleRpgCamera.cs:
+	Fixed movement control
+
+---------------------------
+--- v1.7 --- 12/13/2014
+---------------------------
+Updated ReadMe.pdf
+Added mobile settings to SimpleRpgCamera.cs, making MobileSimpleRpgCamera.cs obsolete.
+Removed MobileSimpleRpgCamera.cs
+
+SimpleRpgCamera.cs:
+	Rotation Settings:
+		NEW: Disable While Unlocked
+
+---------------------------
+--- v1.6 --- 10/28/2014
+---------------------------
+Updated scripts for Unity5
+Moved demo files to a better location
+
+SimpleRpgCamera.cs:
+	Target Settings:
+		NEW: Smooth Offset
+		NEW: Smooth Offset Speed
+	Rotation Settings:
+		NEW: Auto Add Target To Rotate
+	Movement Settings:
+		NEW: Allow Mouse Drag
+		NEW: Drag Button
+		NEW: Drag Sensitivity
+	Zoom Settings:
+		NEW: Auto Add Target To Fade
+
+---------------------------
+--- v1.5.4 --- 7/29/2014
+---------------------------
+Updated the custom inspector for SimpleRpgCamera + Mobile
+
+SrpgcLegacyPlayerController.cs:
+	NEW: Editable animation names for custom animations
+	NEW: Auto Run Key
+	NEW: Run Key
+	NEW: Toggle Run
+	NEW: Mouse Lock Movement (Changes the way the player moves while holding right mouse button)
+	NEW: Always Face Mouse
+	NEW: Move Relative To Camera
+
+SimpleRpgCamera.cs:
+	NEW: Joystick Support for Rotation
+
+Known Issues:
+	Legacy Character Animation does not work correctly for the new Always Face Mouse function
+
+---------------------------
+--- v1.5.3 --- 6/15/2014
+---------------------------
+SimpleRpgCamera.cs:
+	NEW: Mouse Look
+
+---------------------------
+--- v1.5.2 --- 5/18/2014
+---------------------------
+Updated the ReadMe file
+Added Legacy player model and files
+
+SimpleRpgCameraEditor.cs:
+	FIX: Inspector should now save modified values on prefabs
+
+SimpleRpgCamera.cs:
+	NEW: Added public RotateObjects function to manually force objects to face forward relative to the camera
+	NEW: Added Relative Offset Setting
+
+MobileSimpleRpgCamera.cs:
+	NEW: Two Touch Rotation (thanks Paul!)
+
+---------------------------
+--- v1.5.1 --- 3/10/2014
+---------------------------
+Updated the readme file
+
+SrpgcMouseMovementController.cs:
+	NEW: useTouch
+	NEW: touchDelay
+	FIX: Can now use swipe rotation without moving character
+
+SimpleRpgCamera.cs + MobileSimpleRpgCamera.cs:
+	FIX: Zoom distance is no longer clamped while colliding
+
+---------------------------
+--- v1.5.0 --- 2/4/2014
+---------------------------
+I have rewritten most of the code in SimpleRpgCamera.cs to clean things up and allow a new feature.
+The new feature (Use Target Axis) can be seen on the new scene SRPGC - Orbit Demo
+
+Scenes:
+	NEW: SRPGC - Orbit Demo
+
+SimpleRpgCamera.cs:
+	Collision Settings:
+		NEW: Collision Buffer
+	Target Settings:
+		NEW: Use Target Axis
+
+---------------------------
+--- v1.4.0 --- 1/19/2014
+---------------------------
+Scenes:
+	NEW: MobileSRPGC - Rotation Test
+
+SimpleRpgCamera.cs:
+	NEW: Movement Settings
+		MOVE: Edge movement settings moved here
+		NEW: Options for allowing edge / key movement or not
+		NEW: Limit Bounds
+			NEW: Boundary Origin
+			NEW: Boundary Size
+
+MobileSimpleRpgCamera.cs:
+	NEW: Movement Settings:
+		NEW: Allow Panning
+		NEW: Pan Type (Drag)
+			NEW: Panning Sensitivity
+			NEW: Panning Touch Count
+		NEW: Pan Type (Swipe)
+			NEW: Pan Amount
+			NEW: Pan Speed
+		NEW: Panning Allowed Directions (X / Y)
+		NEW: Pan Invert Direction (X / Y)
+	Rotation Settings:
+		NEW: Rotation Type with Drag or Swipe option
+		NEW: Swipe Active Time
+		NEW: Swipe Min Distance
+	Zoom Settings:
+		NEW: Invert Direction
+
+SrpgcJoystick.cs:
+	FIX: Animator now always runs forward according to camera direction
+	NEW: Instant Rotation option
+
+---------------------------
+--- v1.3.2 --- 12/12/2013
+---------------------------
+General:
+	Renamed demo source folder to SRPGCSources
+
+SimpleRpgCamera.cs:
+	Target Settings:
+		FIX: Edge movement now works correctly when camera is rotated
+	Rotation Settings:
+		NEW: Togglable mouse buttons for Allow Rotation
+		NEW: Togglable lock cursor for individual mouse buttons
+
+---------------------------
+--- v1.3.1 --- 11/24/2013
+---------------------------
+General:
+	- Updated and reorganized demo sources to work better with other PhatRobit products
+
+SimpleRpgCamera.cs:
+	- Script now generates an empty GameObject (_SRPGCinvisibleTarget) to support new RTS style edge scrolling movement
+	- Target Settings:
+		- Added Lock To Target
+		- Added Allow Edge Movement
+		- Added Edge Padding
+		- Added Scroll Speed
+		- Added Follow Target Key
+		- Added Alternate Camera Scrolling Keys
+		- Added Show Edges option
+	- Rotation Settings
+		- Added Right Click Origin option under Return To Origin setting
+
+SrpgcMouseMovementController.cs:
+	- Added support for characters that don't use Mecanim's animation for movement
+
+---------------------------
+--- v1.3.0 --- 11/13/2013
+---------------------------
+General:
+- Upgraded project to Unity 4.3
+- Added mocap animations for use with Mecanim
+- Added a joystick control for mobile
+- Rebuilt the demo scenes
+- Cleaned up deprecated code
+- Deleted old player controller scripts
+- Deleted old player animator scripts
+- Deleted mobile demo gui script
+- Added new MouseMovementController script
+- Added new KeyboardMovementController script
+- Rebuilt player prefab to use Mecanim instead of Legacy
+
+MobileSimpleRpgCameraEditor.cs:
+- Fixed an issue with the Objects To Rotate and Objects To Fade fields
+
+---------------------------
+--- v1.2.4 --- 11/6/2013
+---------------------------
+Bug Fixes:
+- Fixed raycast error yet again
+- Return/Rotation Smoothing can no longer be less than 1
+- DemoGUI and MobileDemoGUI no longer generate errors when the camera / player variables are null
+- Updated readme.txt to match current camera inspector values
+
+---------------------------
+--- v1.2.3 --- 10/21/2013
+---------------------------
+SimpleRpgCamera.cs:
+- Added Alternate Rotation Keys under Rotation Settings > Allow Rotation. This allows camera rotation with key presses as
+an alternative from the mouse
+
+MobileSimpleRpgCamera.cs:
+- Rotation is now controlled by swiping
+- Removed obsolete rotation settings
+
+MobileSimpleRpgPlayerController.cs:
+- Updated movement control to be friendlier with the camera (don't move while zooming / swiping)
+
+MobileDemoGUI.cs:
+- Simplified to just display version info and quit button
+
+Bug Fixes:
+- Fixed a raycast error that occured when distance was 0
+
+---------------------------
+--- v1.2.2 --- 10/11/2013
+---------------------------
+SimpleRpgCamera.cs + MobileSimpleRpgCamera.cs:
+- Replaced Collision Style with Collision Alpha Layers allowing the use of both object fading and object collision
+- Created a custom inspector to clean things up and make it easier to find each setting
+- Added Target Tag which searches for a target with the specified tag instead of setting the target directly
+
+Bug Fixes:
+- The camera now rotates around the Target Offset position correctly
+- Object fading had a problem where, depending on the object position, would not fade back in correctly, but is now fixed
+
+---------------------------
+--- v1.2.1 --- 10/9/2013
+---------------------------
+SimpleRpgCamera.cs + MobileSimpleRpgCamera.cs:
+- Added Collision Style
+	- RPG style is how collision worked previously (the camera is pushed in front of obstructions)
+	- TopDown is a new style, which fades objects out rather than moving the camera in front of them (requires transparent shaders)
+- Added Collision Alpha: This is the alpha value for the faded objects when using the TopDown Collision Style
+- Added Collision Fade Speed: The fade speed for the TopDown Collision Style
+- Added Allow Rotation: Prevents or allows camera rotation control
+
+SimpleRpgPlayerController.cs + MobileSimpleRpgPlayerController.cs:
+- Added CLick To Move: When enabled allows the user to click a location for the player to move towards
+- Added Clickable Tags: Objects with a tag in this list will be clickable for Click To Move
+
+SimpleRpgPlayerController.cs:
+- Added Keyboard Control: Enables the use of keyboard controls or not
+
+Scenes:
+- Added a top down demo scene to showcase the new top down camera style and player control
+- Updated the mobile demo scene to use the new top down camera style and player control
+
+Bug Fixes:
+- The camera is no longer choppy when moving and rotating.
+
+---------------------------
+--- v1.2.0 --- 10/1/2013
+---------------------------
+General:
+- Added one of my character models from my own project, Chibits
+- Added a new animation script to play the character's animations
+- Updated the demo terrain
+- Added toon shaders
+
+SimpleRpgPlayerController.cs + MobileSimpleRpgPlayerController.cs:
+- Added code for character animation
+
+---------------------------
+--- v1.1.2 --- 8/28/2013
+---------------------------
+SimpleRpgCamera.cs + MobileSimpleRpgCamera.cs:
+- Added Target Offset option so users can adjust the camera orbit position relative to the target
+
+---------------------------
+--- v1.1.1 --- 8/12/2013
+---------------------------
+SimpleRpgCamera.cs + MobileSimpleRpgCamera.cs:
+- Added Stay Behind Target option which keeps the camera behind the target when user is not controlling it
+
+---------------------------
+--- v1.1.0 --- 7/16/2013
+---------------------------
+General:
+- Object fading now fades all materials attached to the object renderer
+- Updated the player capsule
+
+SimpleRpgCamera.cs + MobileSimpleRpgCamera.cs:
+- Changed Rotate Target to Rotate Objects
+- Added Objects To Rotate to allow multiple objects to rotate
+- Changed Fade Target to Fade Objects
+- Added Objects To Fade to allow multiple objects to fade
+- Removed the Z axis for Origin Rotation
+
+Bug Fixes:
+- Return To Origin now returns via the shortest distance correctly
+
+---------------------------
+--- v1.0.4 --- 7/13/2013
+---------------------------
+General:
+- Moved changlog to its own file
+
+Bug Fixes:
+- The camera now starts at the correct Origin Rotation when Return To Origin is initially false
+
+SimpleRpgCamera.cs:
+- Added alternate zoom keys so users on machines without mouse wheels (laptops) can zoom with those instead
+- Added a key press delay for the alternate zoom keys so when they are held down it will zoom in/out faster after the delay
+
+SimpleRpgCamera.cs + MobileSimpleRpgCamera.cs:
+- Added ability to invert the mouse / touch input for X and Y
+- Added Fade Target option that fades the target out (requires transparent shader)
+- Added Fade Distance to determine from what distance the target is completely faded out
+
+---------------------------
+--- v1.0.3 --- 7/3/2013
+---------------------------
+General:
+- Added a simple GUI for the demo scenes for testing some features
+
+SimpleRpgCamera.cs + MobileSimpleRpgCamera.cs:
+- Added a Controllable setting
+- Added Origin Rotation
+- Added Min and Max Angle
+- Changed Smoothing to Zoom Smoothing
+- Added Return To Origin
+- Added Return Smoothing
+
+Mobile:
+- Updated the demo GUI to be more mobile friendly
+
+--- v1.0.2 --- 6/30/2013
+General:
+- Small bug fixes
+- Added mobile versions of SimpleRpgCamera.cs and SimpleRpgPlayerController.cs
+
+---------------------------
+--- v1.0.1 --- 6/28/2013
+---------------------------
+General:
+- Added comments to code
+- Added SimpleRpgPlayerController.cs
+- Reduced asset store price to $10
+- Updated asset store images
+- Updated web demo
+
+---------------------------
+--- v1.0.0 --- 6/25/2013
+---------------------------
+Initial release
