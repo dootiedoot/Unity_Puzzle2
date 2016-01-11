@@ -10,10 +10,12 @@ public class UnitManager : MonoBehaviour
 
     //  References
     FenceManager _fenceManager;
+    //GameManager _gameManager;
 
     void Awake()
     {
         _fenceManager = GameObject.FindGameObjectWithTag(Tags.FenceManager).GetComponent<FenceManager>();
+        //_gameManager = GameObject.FindGameObjectWithTag(Tags.GameManager).GetComponent<GameManager>();
     }
 
 	// Use this for initialization
@@ -29,6 +31,9 @@ public class UnitManager : MonoBehaviour
             //Transform obj = Instantiate(Prefab, new Vector3(newPos.x, 0, newPos.y), Quaternion.identity) as Transform;
             tempUnit.SetParent(transform);
             tempUnit.transform.position = new Vector3(newPos.x, 0, newPos.y) + transform.position;
+
+            //  Update Game Manager
+            GameManager.AmountInField++;
 		}
 	}
 }

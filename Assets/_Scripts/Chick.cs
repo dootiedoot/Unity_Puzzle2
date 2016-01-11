@@ -4,6 +4,7 @@ using PathologicalGames;
 
 public class Chick : MonoBehaviour 
 {
+    public int CapacityAmount;
 	public float hopDistance;
     public float minJumpDelay;
     public float maxJumpDelay;
@@ -12,6 +13,7 @@ public class Chick : MonoBehaviour
     bool checkGoal = false;
 
     //  References
+    GameManager _gameManager;
     SphereCollider sphereCol;
 
     //  Animation
@@ -26,6 +28,7 @@ public class Chick : MonoBehaviour
     // Use this for initialization
     void Awake () 
 	{
+        _gameManager = GameObject.FindGameObjectWithTag(Tags.GameManager).GetComponent<GameManager>();
         sphereCol = GetComponent<SphereCollider>();
 		animator = GetComponentInChildren<Animator>();
         audioSource = GetComponent<AudioSource>();
@@ -45,6 +48,7 @@ public class Chick : MonoBehaviour
         animator.SetBool(isHoppingHash, true);
         checkGoal = true;
     }
+
     //  Called from animation
 	IEnumerator Hop()
 	{
@@ -52,7 +56,7 @@ public class Chick : MonoBehaviour
         if(Chance.Check(.5f))
         {
             audioSource.pitch = Random.Range(.7f, 1f);
-            audioSource.PlayOneShot(ChirpSound, .7f);
+            audioSource.PlayOneShot(ChirpSound, .5f);
         }
         audioSource.pitch = Random.Range(.7f, 1.3f);
         audioSource.PlayOneShot(JumpSound, .40f);
@@ -76,7 +80,16 @@ public class Chick : MonoBehaviour
         // If the ray has hit something that is within our collision paramters
         if (Physics.Raycast(ray, out hit, Time.deltaTime + .1f, Layers.Buildings))
         {
-            PoolManager.Pools["Units"].Despawn(this.transform);
+            Building _building = hit.transform.GetComponent<Building>();
+            if(_building.CanStore(CapacityAmount, Building.AnimalType.Chick))
+            {
+                _building.AdjustCount(CapacityAmount);
+                //  Game Manager
+                GameManager.chickCurrentAmt++;
+                _gameManager.DecrementAmount();
+
+                PoolManager.Pools["Units"].Despawn(this.transform);
+            }
         }
     }
     float GetFarthestHop()
